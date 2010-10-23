@@ -78,21 +78,3 @@ instance FromData Bookmark where
   fromData = do
     burl <- look "url"
     return nullBookmark{ bookmarkUrl = burl}
-
-
-
---showBookmarkForm :: ServerPart Response
---showBookmarkForm = ok $ toResponse $ BookmarkForm [] nullBookmark
---
---bookmarkForm :: [String] -> bookmark -> Html
---bookmarkForm errors bookmark = gui "/" <<
---    [ ulist ! [theclass "errors"] << map (li <<) errors
---    , label << "Title "
---    , textfield "title" ! [size "50", value $ bookmarkTitle bookmark]
---    , label << "Syntax "
---    , select ! [name "syntax", value $ bookmarkSyntax bookmark] <<
---        map (\l -> option ! [value l] << l) ("":languages)
---    , submit "update" "Save"
---    , br
---    , textarea ! [name "contents", rows "20", cols "76"] <<
---        bookmarkContents bookmark ]
